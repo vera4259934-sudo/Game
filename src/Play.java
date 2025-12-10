@@ -11,14 +11,14 @@ public class Play extends JFrame {
         Play game = new Play();
     }
 
-    Image fon = Toolkit.getDefaultToolkit().createImage("H:/Кулинарный вызов/заставка.png");
-    Ch knopkaPlay = new Ch("H:/Кулинарный вызов/кнопка Play.png",435,170);
+    Image fon = Toolkit.getDefaultToolkit().createImage("src/img/заставка.png");
+    Ch knopkaPlay = new Ch("src/img/кнопка Play.png",435,170);
 
     public int left =1;
 
     Play()
     {
-        getContentPane().add(new JLabel(new ImageIcon("H:/Кулинарный вызов/заставка.png")));
+        getContentPane().add(new JLabel(new ImageIcon("src/img/заставка.png")));
         pack();
         setVisible(true);
         setTitle("The best game");
@@ -46,6 +46,7 @@ public class Play extends JFrame {
                 dispose();
                 JFrame levelFrame = new JFrame("Level 1");
                 levelFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
                 levelFrame.add(new Level_1());
                 levelFrame.pack();
 

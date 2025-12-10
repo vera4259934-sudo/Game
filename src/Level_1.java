@@ -1,3 +1,5 @@
+import sun.plugin.javascript.navig.Array;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -14,7 +16,7 @@ public class Level_1 extends JPanel {
     private int mouseX, mouseY;
     private boolean isDragging = false;
     private NewProduct selectedProduct = null;
-    private List<NewProduct> product = new LinkedList<>();
+    private List<NewProduct> product = new ArrayList<>();
 
     public Level_1() {
         try {
@@ -26,19 +28,19 @@ public class Level_1 extends JPanel {
 
 
 
-        product.add(new NewProduct("H:/vera_project_2025_26/Кулинарный вызов/мука.png", 50, 450, "flour"));
-        product.add(new NewProduct("H:/vera_project_2025_26/Кулинарный вызов/яйца.png", 1050,400, "egg"));
-        product.add(new NewProduct("H:/vera_project_2025_26/Кулинарный вызов/молоко.png",250,370, "milk"));
-        product.add(new NewProduct("H:/vera_project_2025_26/Кулинарный вызов/сыр.png",420,390, "cheese"));
-        product.add(new NewProduct("H:/vera_project_2025_26/Кулинарный вызов/миксер.png", 25, 300, "mixer"));
-        product.add(new NewProduct("H:/vera_project_2025_26/Кулинарный вызов/помидоры.png",1150,400, "tomato"));
-        product.add(new NewProduct("H:/vera_project_2025_26/Кулинарный вызов/ложка.png",900,600, "spoon"));
-        product.add(new NewProduct("H:/vera_project_2025_26/Кулинарный вызов/кетчуп.png",515,310, "ketchup"));
-        product.add(new NewProduct("H:/vera_project_2025_26/Кулинарный вызов/миска.png",1030,560, "dish"));
-        product.add(new NewProduct("H:/vera_project_2025_26/Кулинарный вызов/оливковое масло.png",600,310, "oil"));
-        product.add(new NewProduct("H:/vera_project_2025_26/Кулинарный вызов/сыр 2.png",770,420, "cheese 2"));
-        product.add(new NewProduct("H:/vera_project_2025_26/Кулинарный вызов/нож.png",320,550, "kneef"));
-        product.add(new NewProduct("H:/vera_project_2025_26/Кулинарный вызов/доска.png",900,450, "board"));
+        product.add(new NewProduct("src/img/мука.png", 50, 450, "flour"));
+        product.add(new NewProduct("src/img/яйца.png", 1050,400, "egg"));
+        product.add(new NewProduct("src/img/молоко2s3.png",250,370, "milk"));
+        product.add(new NewProduct("src/img/сыр.png",420,390, "cheese"));
+        product.add(new NewProduct("src/img/миксер.png", 25, 300, "mixer"));
+        product.add(new NewProduct("src/img/помидоры.png",1150,400, "tomato"));
+        product.add(new NewProduct("src/img/ложка.png",900,600, "spoon"));
+        product.add(new NewProduct("src/img/кетчуп.png",515,310, "ketchup"));
+        product.add(new NewProduct("src/img/миска.png",1030,560, "dish"));
+        product.add(new NewProduct("src/img/оливковое масло.png",600,310, "oil"));
+        product.add(new NewProduct("src/img/сыр 2.png",770,420, "cheese 2"));
+        product.add(new NewProduct("src/img/нож.png",320,550, "kneef"));
+        product.add(new NewProduct("src/img/доска.png",900,450, "board"));
 
 
 
@@ -102,7 +104,7 @@ public class Level_1 extends JPanel {
 
     @Override
     protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
+
         if (backgroundImage != null) {
             g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
         }
