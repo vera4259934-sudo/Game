@@ -17,6 +17,10 @@ public class Level_1 extends JPanel {
     private boolean isDragging = false;
     private NewProduct selectedProduct = null;
     private List<NewProduct> product = new ArrayList<>();
+    private NewProduct dish = null;
+    private boolean milkAdded = false;
+    private boolean flourAdded = false;
+    private boolean eggAdded = false;
 
     public Level_1() {
         try {
@@ -42,7 +46,13 @@ public class Level_1 extends JPanel {
         product.add(new NewProduct("src/img/нож.png",320,550, "kneef"));
         product.add(new NewProduct("src/img/доска.png",900,450, "board"));
 
-
+        for (int i = 0; i < product.size(); i++) {
+            NewProduct p = product.get(i);
+            if (p.name.equals("dish")) {
+                dish = p;
+                break;
+            }
+        }
 
 
 
@@ -66,8 +76,35 @@ public class Level_1 extends JPanel {
 
             @Override
             public void  mouseReleased(MouseEvent e) {
-
                 isDragging = false;
+
+
+                if (selectedProduct != null) {
+                    if (dish.isInside(selectedProduct.x, selectedProduct.y)) {
+                        if (selectedProduct.name.equals("milk") && !milkAdded) {
+                            product.remove(selectedProduct);
+                            milkAdded = true;
+                        } else if (selectedProduct.name.equals("flour") && !flourAdded) {
+                            product.remove(selectedProduct);
+                            flourAdded = true;
+                        }
+                        else if (selectedProduct.name.equals("egg") && !eggAdded) {
+                            product.remove(selectedProduct);
+                            eggAdded = true;
+                        }
+
+                        selectedProduct = null;
+                        if (milkAdded && flourAdded&& eggAdded) {
+                            try {
+                                dish._image = ImageIO.read(new File("src/img/тесто_в_миске.png"));
+                            } catch (IOException oops) {
+                                System.err.println("Не удалось загрузить изображение теста: " + oops.getMessage());
+                            }
+                        }
+                        repaint();
+                    }
+                }
+
                 selectedProduct = null;
             }
         });
