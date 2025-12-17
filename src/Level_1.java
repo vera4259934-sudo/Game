@@ -34,7 +34,7 @@ public class Level_1 extends JPanel {
 
         product.add(new NewProduct("src/img/мука.png", 50, 450, "flour"));
         product.add(new NewProduct("src/img/яйца.png", 1050,400, "egg"));
-        product.add(new NewProduct("src/img/молоко2s3.png",250,370, "milk"));
+        product.add(new NewProduct("src/img/молоко.png",250,370, "milk"));
         product.add(new NewProduct("src/img/сыр.png",420,390, "cheese"));
         product.add(new NewProduct("src/img/миксер.png", 25, 300, "mixer"));
         product.add(new NewProduct("src/img/помидоры.png",1150,400, "tomato"));
@@ -82,7 +82,13 @@ public class Level_1 extends JPanel {
                 if (selectedProduct != null) {
                     if (dish.isInside(selectedProduct.x, selectedProduct.y)) {
                         if (selectedProduct.name.equals("milk") && !milkAdded) {
-                            product.remove(selectedProduct);
+                            try {
+                                selectedProduct._image = ImageIO.read(new File("src/img/молоко1s3.png"));
+                                repaint();
+                            } catch (IOException err) {
+                                System.err.println("Не удалось загрузить новое изображение молока: " + err.getMessage());
+                            }
+
                             milkAdded = true;
                         } else if (selectedProduct.name.equals("flour") && !flourAdded) {
                             product.remove(selectedProduct);
