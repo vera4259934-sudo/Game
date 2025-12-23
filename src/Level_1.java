@@ -1,5 +1,3 @@
-import sun.plugin.javascript.navig.Array;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -23,6 +21,7 @@ public class Level_1 extends JPanel {
     private boolean eggAdded = false;
 
     public Level_1() {
+    // backgroundImage = Toolkit.getDefaultToolkit().createImage("src/img/Фон_для_основной_игры.png");
         try {
             backgroundImage = ImageIO.read(new File("src/img/Фон_для_основной_игры.png"));
         } catch (IOException e) {
@@ -40,7 +39,7 @@ public class Level_1 extends JPanel {
         product.add(new NewProduct("src/img/помидоры.png",1150,400, "tomato"));
         product.add(new NewProduct("src/img/ложка.png",900,600, "spoon"));
         product.add(new NewProduct("src/img/кетчуп.png",515,310, "ketchup"));
-        product.add(new NewProduct("src/img/миска.png",1030,560, "dish"));
+        product.add(dish = new NewProduct("src/img/миска.png",1030,560, "dish"));
         product.add(new NewProduct("src/img/оливковое масло.png",600,310, "oil"));
         product.add(new NewProduct("src/img/сыр 2.png",770,420, "cheese 2"));
         product.add(new NewProduct("src/img/нож.png",320,550, "kneef"));
@@ -57,6 +56,8 @@ public class Level_1 extends JPanel {
 
 
         addMouseListener(new MouseAdapter() {
+        int initialX;
+        int initialY;
             @Override
             public void mousePressed(MouseEvent e) {
                 for (int i = 0; i<product.size(); i++) {
@@ -64,6 +65,8 @@ public class Level_1 extends JPanel {
                         selectedProduct = product.get(i);
                         product.remove(i);
                         product.add(selectedProduct);
+                        initialX = selectedProduct.x;
+                        initialY = selectedProduct.y;
                         mouseX = e.getX() - selectedProduct.x;
                         mouseY = e.getY() - selectedProduct.y;
                         isDragging = true;
@@ -78,12 +81,13 @@ public class Level_1 extends JPanel {
             public void  mouseReleased(MouseEvent e) {
                 isDragging = false;
 
-
                 if (selectedProduct != null) {
                     if (dish.isInside(selectedProduct.x, selectedProduct.y)) {
                         if (selectedProduct.name.equals("milk") && !milkAdded) {
                             try {
                                 selectedProduct._image = ImageIO.read(new File("src/img/молоко1s3.png"));
+                                selectedProduct.x = initialX;
+                                selectedProduct.y = initialY;
                                 repaint();
                             } catch (IOException err) {
                                 System.err.println("Не удалось загрузить новое изображение молока: " + err.getMessage());
@@ -91,11 +95,25 @@ public class Level_1 extends JPanel {
 
                             milkAdded = true;
                         } else if (selectedProduct.name.equals("flour") && !flourAdded) {
-                            product.remove(selectedProduct);
+                            try {
+                                selectedProduct._image = ImageIO.read(new File("src/img/мука2s1.png"));
+                                selectedProduct.x = initialX;
+                                selectedProduct.y = initialY;
+                                repaint();
+                            } catch (IOException err) {
+                                System.err.println("Не удалось загрузить новое изображение молока: " + err.getMessage());
+                            }
                             flourAdded = true;
                         }
                         else if (selectedProduct.name.equals("egg") && !eggAdded) {
-                            product.remove(selectedProduct);
+                            try {
+                                selectedProduct._image = ImageIO.read(new File("src/img/яйцо_для_теста.png"));
+                                selectedProduct.x = initialX;
+                                selectedProduct.y = initialY;
+                                repaint();
+                            } catch (IOException err) {
+                                System.err.println("Не удалось загрузить новое изображение молока: " + err.getMessage());
+                            }
                             eggAdded = true;
                         }
 
@@ -110,6 +128,7 @@ public class Level_1 extends JPanel {
                         repaint();
                     }
                 }
+
 
                 selectedProduct = null;
             }
@@ -156,7 +175,4 @@ public class Level_1 extends JPanel {
             g.drawImage(currentProduct._image, currentProduct.x, currentProduct.y, this);
         }
     }
-
-
-    }
-
+}

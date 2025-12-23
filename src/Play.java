@@ -14,8 +14,6 @@ public class Play extends JFrame {
     Image fon = Toolkit.getDefaultToolkit().createImage("src/img/фон для заставки.png");
     Ch knopkaPlay = new Ch("src/img/кнопка Play.png",480,230);
 
-    public int left =1;
-
     Play()
     {
         getContentPane().add(new JLabel(new ImageIcon("src/img/фон для заставки.png")));

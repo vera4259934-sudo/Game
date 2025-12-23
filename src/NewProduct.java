@@ -7,10 +7,13 @@ public class NewProduct {
     public BufferedImage _image;
     public int x, y;
     public String name;
+    int startX, startY;
 
     public NewProduct(String imagePath, int x, int y, String name) {
         this.x = x;
         this.y = y;
+        this.startX = x;
+        this.startY = y;
         this.name = name;
         try {
             _image = ImageIO.read(new File(imagePath));

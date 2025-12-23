@@ -1,4 +1,4 @@
-import javax.swing.*;
+/*import javax.swing.*;
 
 public class Main {
 
@@ -11,4 +11,4 @@ public class Main {
         f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-}
+}*/
