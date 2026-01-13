@@ -45,7 +45,7 @@ public class Level_1 extends JPanel {
         product.add(new NewProduct("src/img/нож.png",320,550, "kneef"));
         product.add(new NewProduct("src/img/доска.png",900,450, "board"));
 
-        for (int i = 0; i < product.size(); i++) {
+        /*for (int i = 0; i < product.size(); i++) {
             NewProduct p = product.get(i);
             if (p.name.equals("dish")) {
                 dish = p;
@@ -54,7 +54,7 @@ public class Level_1 extends JPanel {
         }
 
 
-
+*/
         addMouseListener(new MouseAdapter() {
         int initialX;
         int initialY;

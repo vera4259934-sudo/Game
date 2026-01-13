@@ -40,14 +40,12 @@ public class Play extends JFrame {
         @Override
         public void mouseClicked(MouseEvent qwerty) {
             if (qwerty.getX() >= knopkaPlay.x && qwerty.getX() <= (knopkaPlay.x + 420) && qwerty.getY() >= knopkaPlay.y && qwerty.getY() <= (knopkaPlay.y + 220)) {
-                System.out.println("Начинаем игру");
+                System.out.println("Интересный факт про страну, блюдо, которой ты будешь готовить");
                 dispose();
-                JFrame levelFrame = new JFrame("Level 1");
+                JFrame levelFrame = new JFrame("To the recipe");
                 levelFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-                levelFrame.add(new Level_1());
+                levelFrame.add(new Screen_fact());
                 levelFrame.pack();
-
                 levelFrame.setVisible(true);
             }
         }
