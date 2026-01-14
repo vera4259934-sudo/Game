@@ -28,7 +28,7 @@ public class ScreenRecipe extends JFrame {
 
     private void startTimer() {
         timer = new Timer();
-        timer.schedule(new TimerTask() {
+        TimerTask task = new TimerTask() {
             @Override
             public void run() {
                 timeLeft--;
@@ -37,8 +37,11 @@ public class ScreenRecipe extends JFrame {
                     openTimeoutScreen();
                 }
             }
-        }, 0, 1000);
+        };
+        timer.schedule(task, 0, 1000);
     }
+
+
 
     private void openLevel1() {
         dispose();

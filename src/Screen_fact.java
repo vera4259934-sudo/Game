@@ -39,11 +39,11 @@ private MouseListener mouseListener = new MouseAdapter() {
         if (qwerty.getX() >= KnopkaTheRecipe.x && qwerty.getX() <= (KnopkaTheRecipe.x + 420) && qwerty.getY() >= KnopkaTheRecipe.y && qwerty.getY() <= (KnopkaTheRecipe.y + 220)) {
             System.out.println("Начинаем игру");
             dispose();
-            JFrame levelFrame = new JFrame("Recipe");
-            levelFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            levelFrame.add(new ScreenRecipe());
-            levelFrame.pack();
-            levelFrame.setVisible(true);
+            JFrame Recipe = new JFrame("Recipe");
+            Recipe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            Recipe.add(new ScreenRecipe());
+            Recipe.pack();
+            Recipe.setVisible(true);
         }
     }
 };
