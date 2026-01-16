@@ -10,6 +10,7 @@ public class ScreenRecipe extends JFrame {
     Ch knopkaReady = new Ch("src/img/knopkaReady.png", 1015, 500);
     private Timer timer;
     private int timeLeft = 120;
+    private String timeString;
 
     public ScreenRecipe() {
         setTitle("Recipe Challenge");
@@ -24,6 +25,10 @@ public class ScreenRecipe extends JFrame {
     public void paint(Graphics g) {
         g.drawImage(recipeFon, 0, 0, this);
         g.drawImage(knopkaReady._image, knopkaReady.x, knopkaReady.y, this);
+        g.setFont(new Font("Arial", Font.BOLD, 35));
+        g.setColor(Color.RED);
+        g.drawString("Время: " + timeLeft, 1085, 300);
+
     }
 
     private void startTimer() {
@@ -32,6 +37,8 @@ public class ScreenRecipe extends JFrame {
             @Override
             public void run() {
                 timeLeft--;
+                timeString = String.valueOf(timeLeft);
+                repaint();
                 if (timeLeft < 0) {
                     timer.cancel();
                     openTimeoutScreen();
